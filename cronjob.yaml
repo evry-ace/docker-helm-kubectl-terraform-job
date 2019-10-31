@@ -1,0 +1,15 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: docker-helm-kubectl-terraform-generate-releases
+  namespace: evry-ace
+spec:
+  schedule: '0 */2 * * *'
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: script
+              image: evryace/docker-helm-kubectl-terraform-release-generator:3
+          restartPolicy: OnFailure

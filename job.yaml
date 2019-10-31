@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: docker-helm-kubectl-terraform-generate-releases
+  namespace: evry-ace
+spec:
+  template:
+    spec:
+      containers:
+        - name: script
+          image: evryace/docker-helm-kubectl-terraform-release-generator:6
+      restartPolicy: OnFailure
